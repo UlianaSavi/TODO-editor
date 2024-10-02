@@ -1,0 +1,131 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --simple-black: black;
+    --simple-white: white;
+    --simple-grey: grey;
+    --lite-violet: rgb(241, 83, 255);
+    --white-grey: rgb(216, 215, 215);
+    --dark-grey: rgb(80, 79, 79);
+}
+
+.list .list__item {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: var(--simple-white);
+    font-size: 18px;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.list .list__item:hover {
+    background: var(--simple-grey);
+}
+
+.list .list__item.checked {
+    background: var(--simple-grey);
+    color: var(--simple-white);
+    text-decoration: line-through;
+}
+
+.list .list__item.checked::before {
+    content: '';
+    position: absolute;
+    border-color: var(--simple-white);
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+    background-color: var(--lite-violet);
+    color: var(--simple-white);
+}
+
+.header {
+    background-color: var(--lite-violet);
+    padding: 30px 40px;
+    color: var(--simple-white);
+    text-align: center;
+}
+
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.todoInp {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px;
+    width: 25%;
+    background: var(--simple-white);
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+.addBtn {
+    padding: 10px;
+    width: 25%;
+    background: var(--simple-white);
+    color: var(--white-grey);
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+.addBtn:hover {
+    background-color: var(--simple-grey);
+}

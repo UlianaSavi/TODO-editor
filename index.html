@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приложение заметок</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+    <div id="header" class="header">
+        <h2>Заметки</h2>
+        <input type="text" class="todoInp" placeholder="Текст заметки...">
+        <span onclick="add()" class="addBtn">Добавить</span>
+    </div>
+
+    <ul class="list">
+        <li class="list__item">
+            <div class="list__item__text"></div>
+            <div class="btn">✎</div>
+            <div class="btn">✖</div>
+        </li>
+        <li class="list__item">2</li>
+    </ul>
+
+    <script src="./src/index.js"></script>
+</body>
+
+</html>
