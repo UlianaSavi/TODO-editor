@@ -56,7 +56,7 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 
 .addBtn:hover {
@@ -64,8 +64,11 @@ body {
 }
 
 .list {
-    list-style-type: none;
+    height: 100%;
+    max-height: 300px;
+    list-style: none;
     margin-top: 20px;
+    overflow-y: auto;
 }
 
 .list__item {
@@ -74,7 +77,7 @@ body {
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid var(--simple-grey);
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 
 .list__item:hover {
@@ -91,10 +94,31 @@ body {
     margin-left: 10px;
     padding: 5px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 
 .btn:hover {
     background-color: var(--lite-violet);
     color: var(--simple-white);
+}
+
+/* SCROLL STYLES */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--simple-white);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--lite-violet);
+    border-radius: 10px;
+    border: 1px solid var(--simple-grey);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--hover-violet);
 }
