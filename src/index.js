@@ -1,47 +1,47 @@
 const todosListValues = JSON.parse(localStorage.getItem('list')) || ['Тестовая'];
 const addForm = document.getElementById("addForm");
-const todoInput = document.querySelector('.todoInp');
-const list = document.querySelector('.list');
-const deleteBtns = document.querySelectorAll('.list');
+const todoInput = document.getElementById("todoInp");
+const list = document.getElementById("todoList");
 
 addForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const inputValue = todoInput.value;
-    todoInput.value = '';
+    const inputValue = todoInput.value.trim();
     if (inputValue) {
-        addItem(inputValue)
+        addItem(inputValue);
+        updateStorage();
+        generateList();
     }
+    todoInput.value = '';
 });
-
-deleteBtns.forEach((deleteBtn) => {
-    deleteBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const id = e.target.parentNode.value;
-        if (id > -1) {
-            deleteItem(id);
-        }
-    });
-})
 
 const addItem = (item) => {
     todosListValues.push(item);
-    updateStorage('list', JSON.stringify(todosListValues));
-    generateList();
-}
+};
 
-const editItem = (item) => {
-    console.log(123);
-}
+const editItem = (id, newText) => {
+    todosListValues[id] = newText;
+};
 
 const deleteItem = (id) => {
     todosListValues.splice(id, 1);
-    updateStorage('list', JSON.stringify(todosListValues));
-    generateList();
-}
+};
 
-const updateStorage = (id, data) => {
-    localStorage.setItem(id, data)
-}
+const updateStorage = () => {
+    localStorage.setItem('list', JSON.stringify(todosListValues));
+};
+
+const handleAction = (action, index) => {
+    if (action === 'edit') {
+        const newText = prompt('Редактировать заметку:', todosListValues[index]);
+        if (newText) {
+            editItem(index, newText.trim());
+        }
+    } else if (action === 'delete') {
+        deleteItem(index);
+    }
+    updateStorage();
+    generateList();
+};
 
 const generateList = () => {
     list.innerHTML = '';
@@ -49,19 +49,20 @@ const generateList = () => {
     todosListValues.forEach((item, index) => {
         const listItem = document.createElement('li');
         listItem.classList.add('list__item');
-        listItem.value = index;
 
         const listItemText = document.createElement('div');
         listItemText.classList.add('list__item__text');
         listItemText.textContent = item;
 
-        const editBtn = document.createElement('div');
-        editBtn.classList.add('btn', 'editBtn');
+        const editBtn = document.createElement('button');
+        editBtn.classList.add('btn', 'editBtn', 'list__item__btn');
         editBtn.textContent = '✎';
+        editBtn.addEventListener('click', () => handleAction('edit', index));
 
-        const deleteBtn = document.createElement('div');
-        deleteBtn.classList.add('btn', 'deleteBtn');
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('btn', 'deleteBtn', 'list__item__btn');
         deleteBtn.textContent = '✖';
+        deleteBtn.addEventListener('click', () => handleAction('delete', index));
 
         listItem.appendChild(listItemText);
         listItem.appendChild(editBtn);
@@ -69,6 +70,6 @@ const generateList = () => {
 
         list.appendChild(listItem);
     });
-}
+};
 
 generateList();
