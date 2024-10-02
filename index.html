@@ -9,20 +9,23 @@
 </head>
 
 <body>
-    <div id="header" class="header">
-        <h2>Заметки</h2>
-        <input type="text" class="todoInp" placeholder="Текст заметки...">
-        <span onclick="add()" class="addBtn">Добавить</span>
-    </div>
+    <div class="container">
+        <div id="header" class="header">
+            <h2>Заметки</h2>
+            <form id="addForm" class="addForm" action="">
+                <input type="text" class="todoInp" placeholder="Текст заметки...">
+                <button type="submit" class="addBtn">Добавить</span>
+            </form>
+        </div>
 
-    <ul class="list">
-        <li class="list__item">
-            <div class="list__item__text"></div>
-            <div class="btn">✎</div>
-            <div class="btn">✖</div>
-        </li>
-        <li class="list__item">2</li>
-    </ul>
+        <ul class="list">
+            <li class="list__item">
+                <div class="list__item__text"></div>
+                <div class="btn">✎</div>
+                <div class="btn">✖</div>
+            </li>
+        </ul>
+    </div>
 
     <script src="./src/index.js"></script>
 </body>
